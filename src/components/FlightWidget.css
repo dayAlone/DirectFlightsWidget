@@ -1,0 +1,699 @@
+.flight-widget-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+/* Контейнер для трех колонок */
+.controls-columns {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+/* Левая колонка с селекторами данных */
+.left-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 250px;
+  padding-top: 20px;
+}
+
+/* Центральная колонка с маршрутом и виджетом */
+.center-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+  max-width: 600px;
+  padding-top: 20px;
+}
+
+/* Правая колонка с настройками отображения */
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 250px;
+  padding-top: 20px;
+}
+
+.selector-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.selector-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #5f6368;
+  margin-bottom: 4px;
+}
+
+.route-select,
+.airline-select,
+.mode-select,
+.collapse-select,
+.price-display-select,
+.dates-count-select,
+.initial-day-select,
+.price-indicator-select,
+.collapse-on-click-select,
+.search-depth-select {
+  padding: 10px 12px;
+  background: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #202124;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.route-select:hover,
+.airline-select:hover,
+.mode-select:hover,
+.collapse-select:hover,
+.price-display-select:hover,
+.dates-count-select:hover,
+.initial-day-select:hover,
+.price-indicator-select:hover,
+.collapse-on-click-select:hover,
+.search-depth-select:hover {
+  background: #e8e8e8;
+}
+
+.route-select:focus,
+.airline-select:focus,
+.mode-select:focus,
+.collapse-select:focus,
+.price-display-select:focus,
+.dates-count-select:focus,
+.initial-day-select:focus,
+.price-indicator-select:focus,
+.collapse-on-click-select:focus,
+.search-depth-select:focus {
+  outline: none;
+  border-color: #4285f4;
+  background: white;
+}
+
+.flight-widget-new {
+  background: transparent;
+  border-radius: 24px;
+  box-shadow: none;
+  overflow: hidden;
+  width: 480px;
+  margin: 0 auto;
+}
+
+.widget-message {
+  padding: 40px 20px;
+  text-align: center;
+  font-size: 16px;
+  color: #5f6368;
+  background: white;
+  border-radius: 20px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.04);
+}
+
+.widget-header {
+  padding: 20px 20px 12px;
+}
+
+.widget-header h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #202124;
+  margin: 0;
+}
+
+.selector-wrapper {
+  display: flex;
+  flex-direction: column;
+  background: #f5f5f5;
+  border-radius: 20px;
+  padding: 0;
+  margin: 0 4px 5px;
+  gap: 0px;
+  box-shadow: none;
+  position: relative;
+}
+
+.dates-section {
+  background: transparent;
+  border-radius: 14px;
+  padding: 5px 0;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.dates-scroll {
+  display: flex;
+  gap: 6px;
+  overflow-x: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  border-radius: 10px;
+  margin: 0 5px;
+}
+
+.dates-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+
+.date-pill {
+  flex-shrink: 0;
+  width: 90px;
+  height: 20px;
+  padding: 0;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  pointer-events: none;
+  transition: height 0.3s ease, padding 0.3s ease;
+  background: #f5f5f5;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  outline: none;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.dates-section.expanded .date-pill {
+  height: 36px;
+  padding: 6px 0;
+  flex-direction: column;
+  gap: 2px;
+  pointer-events: auto;
+}
+
+.dates-section.expanded .date-label {
+  line-height: 1;
+}
+
+.date-label {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  position: relative;
+}
+
+.date-pill.no-flights {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.date-pill.no-flights .date-no-flights {
+  color: #999;
+}
+
+.date-pill.selected {
+  background: transparent;
+  color: #4285f4;
+  /* box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3); */
+}
+
+.dates-section.expanded .date-pill.selected {
+  background: #4285f4;
+  color: white;
+}
+
+.date-main {
+  display: inline;
+}
+
+.date-weekday-wrapper {
+  display: none;
+}
+
+.dates-section.expanded .date-weekday-wrapper {
+  display: inline;
+}
+
+.date-dot {
+  margin: 0 3px;
+}
+
+.date-pill.selected .date-dot {
+  color: #4285f4;
+}
+
+.dates-section.expanded .date-pill.selected .date-dot {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.date-weekday {
+  display: inline;
+}
+
+.date-pill.selected .date-label {
+  color: #4285f4;
+}
+
+.dates-section.expanded .date-pill.selected .date-label {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.price-indicator {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: #3BBF56;
+  border-radius: 50%;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+
+.dates-section.expanded .price-indicator {
+  display: none;
+}
+
+.date-pill.selected .date-dot {
+  color: #4285f4;
+}
+
+.dates-section.expanded .date-pill.selected .date-dot {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.date-selected-text {
+  font-size: 12px;
+  color: white;
+  font-weight: 500;
+  line-height: 1;
+  display: none;
+  transition: opacity 0.3s ease;
+}
+
+.dates-section.expanded .date-selected-text {
+  display: block;
+}
+
+
+.date-price {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  color: #5f6368;
+  display: none;
+  transition: opacity 0.3s ease;
+}
+
+.dates-section.expanded .date-price {
+  display: block;
+}
+
+.price-label {
+  font-weight: 400;
+  color: inherit;
+}
+
+.price-cheaper {
+  color: #3BBF56;
+}
+
+.price-higher {
+  color: #EA4335;
+}
+
+.price-equal {
+  color: #5f6368;
+  font-weight: 400;
+}
+
+.date-price.price-cheaper {
+  color: #3BBF56;
+}
+
+.date-price.price-higher {
+  color: #EA4335;
+}
+
+.date-price.price-equal {
+  color: #5f6368;
+  font-weight: 400;
+}
+
+.date-no-flights {
+  font-size: 12px;
+  font-weight: 400;
+  color: #999;
+  line-height: 1;
+  text-align: center;
+  display: none;
+}
+
+.dates-section.expanded .date-no-flights {
+  display: block;
+}
+
+.times-section {
+  background: #fff;
+  border-radius: 18px;
+  padding: 5px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.04);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.times-scroll {
+  display: flex;
+  gap: 6px;
+  overflow-x: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  border-radius: 10px;
+}
+
+.times-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.time-pill {
+  flex-shrink: 0;
+  min-width: 65px;
+  height: 36px;
+  padding: 6px 14px;
+  background: white;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  text-align: center;
+  outline: none;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.dates-section.expanded ~ .times-section .time-pill {
+  height: 20px;
+  padding: 0 14px;
+  flex-direction: row;
+}
+
+.time-pill.selected {
+  background: #4285f4;
+}
+
+.time-pill:hover:not(.selected) {
+  background: white;
+}
+
+.dates-section.expanded ~ .times-section .time-pill.selected {
+  background: transparent;
+  color: #4285f4;
+}
+
+.time-value {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  color: #202124;
+}
+
+.time-pill.selected .time-value {
+  color: white;
+}
+
+.dates-section.expanded ~ .times-section .time-pill.selected .time-value {
+  color: #4285f4;
+}
+
+.time-price {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  color: #5f6368;
+}
+
+.dates-section.expanded ~ .times-section .time-price {
+  display: none;
+}
+
+.time-pill.selected .time-price {
+  color: white;
+}
+
+.time-price.price-cheaper {
+  color: #3BBF56;
+}
+
+.time-price.price-higher {
+  color: #EA4335;
+}
+
+.time-price.price-equal {
+  color: #5f6368;
+  font-weight: 400;
+}
+
+.time-pill.selected .time-price.price-cheaper {
+  color: white;
+}
+
+.time-pill.selected .time-price.price-higher {
+  color: white;
+}
+
+.time-pill.selected .time-price.price-equal {
+  color: white;
+}
+
+.flight-details {
+  background: white;
+  border-radius: 20px;
+  padding: 15px 15px 15px 25px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.04);
+}
+
+.flight-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.airline-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.airline-logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: #5f6368;
+  margin-left: -9px;
+}
+
+.airline-name {
+  font-size: 16px;
+  font-weight: 500;
+  color: #202124;
+}
+
+.flight-duration {
+  font-size: 13px;
+  color: #5f6368;
+}
+
+.details-button {
+  padding: 6px 12px;
+  background: #f5f5f5;
+  border: none;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #000;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.details-button:hover {
+  background: #e8e8e8;
+}
+
+.route-details {
+  position: relative;
+}
+
+.route-point {
+  display: flex;
+  gap: 23px;
+  align-items: flex-start;
+}
+
+.route-point:first-child {
+  margin-bottom: 15px;
+}
+
+.route-icon {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  background: white;
+  border: 3px solid #e8e8e8;
+  border-radius: 50%;
+  margin-top: 4px;
+  box-shadow: 0 0 0 4px white;
+  position: relative;
+  z-index: 1;
+}
+
+.route-info {
+  flex-shrink: 0;
+  width: 60px;
+}
+
+.route-time {
+  font-size: 16px;
+  font-weight: 500;
+  color: #202124;
+  margin-bottom: 2px;
+}
+
+.route-date {
+  font-size: 13px;
+  color: #5f6368;
+}
+
+.route-location {
+  flex: 1;
+}
+
+.location-city {
+  font-size: 16px;
+  font-weight: 500;
+  color: #202124;
+  margin-bottom: 2px;
+}
+
+.location-airport {
+  font-size: 13px;
+  color: #999;
+}
+
+.route-line {
+  position: absolute;
+  left: 5px;
+  top: 20px;
+  bottom: 20px;
+  width: 2px;
+  background: #e8e8e8;
+  z-index: 0;
+}
+
+/* Стрелки прокрутки */
+.scroll-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 40px;
+  padding-bottom: 3px;
+  background: #ffffff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  font-size: 24px;
+  font-weight: 600;
+  color: #202124;
+  transition: all 0.2s ease;
+}
+
+.scroll-arrow:hover {
+  transform: translateY(-50%) scale(1.05);
+}
+
+.scroll-arrow:active {
+  transform: translateY(-50%) scale(0.98);
+}
+
+.scroll-arrow-left {
+  left: 4px;
+}
+
+.scroll-arrow-right {
+  right: 5px;
+}
+
+.dates-section .scroll-arrow {
+  background: #f5f5f5;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.dates-section.expanded .scroll-arrow {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* В режиме без сворачивания стрелки всегда видимы */
+.collapse-disabled .scroll-arrow {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+.dates-section.expanded ~ .times-section .scroll-arrow {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Стрелки в блоке времени появляются только при наведении */
+.times-section .scroll-arrow {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.times-section:hover .scroll-arrow {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Принудительное отображение в режиме без сворачивания */
+.collapse-disabled .time-price {
+  display: block !important;
+}
+
+.collapse-disabled .time-pill {
+  height: 36px !important;
+  padding: 6px 6px !important;
+  flex-direction: column !important;
+}
+
+.collapse-disabled .time-pill.selected {
+  background: #4285f4 !important;
+  color: white !important;
+}
+
+.collapse-disabled .time-pill.selected .time-value {
+  color: white !important;
+}

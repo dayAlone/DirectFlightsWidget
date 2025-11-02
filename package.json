@@ -1,0 +1,23 @@
+{
+  "name": "direct-flights",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && mkdir -p dist/src/data && cp src/data/*.csv dist/src/data/ && rsync -avz --delete dist/ root@kolmakov.io:/home/as/df/",
+    "build:local": "vite build && mkdir -p dist/src/data && cp src/data/*.csv dist/src/data/",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite": "^5.0.8"
+  }
+}
+

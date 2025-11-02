@@ -1,0 +1,4 @@
+origin,destination,airline,direct_departure_ts,price
+BEG,BCN,W6,2026-01-04 17:25:00,3734
+BEG,BCN,W6,2026-01-07 17:25:00,3064
+BEG,BCN,W6,2025-12-29 17:25:00,16577

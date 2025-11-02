@@ -1,0 +1,4 @@
+origin,destination,airline,direct_departure_ts,price
+LED,AER,5N,2025-11-30 07:20:00,6179
+LED,AER,5N,2025-12-05 07:20:00,7509
+LED,AER,5N,2025-12-07 07:20:00,7509
