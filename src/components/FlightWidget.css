@@ -180,6 +180,7 @@
   pointer-events: none;
   transition: height 0.3s ease, padding 0.3s ease;
   background: #f5f5f5;
+  color: #202124;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -208,6 +209,7 @@
   line-height: 1;
   white-space: nowrap;
   position: relative;
+  color: #202124;
 }
 
 .date-pill.no-flights {
