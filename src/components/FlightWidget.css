@@ -697,3 +697,42 @@
 .collapse-disabled .time-pill.selected .time-value {
   color: white !important;
 }
+
+/* Медиа-запросы для мобильных устройств */
+@media (max-width: 768px) {
+  .controls-columns {
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .left-column,
+  .center-column,
+  .right-column {
+    max-width: 100%;
+    width: 100%;
+    padding-top: 0;
+  }
+
+  .center-column {
+    order: -1; /* Виджет показываем первым на мобильных */
+  }
+
+  .flight-widget-new {
+    width: 100%;
+    max-width: 480px;
+  }
+
+  .date-pill {
+    min-width: 80px;
+    width: 80px;
+  }
+
+  .time-pill {
+    min-width: 60px;
+  }
+
+  .flight-details {
+    padding: 12px 12px 12px 20px;
+  }
+}
